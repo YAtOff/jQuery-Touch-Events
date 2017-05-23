@@ -850,11 +850,12 @@
     // Trigger a custom event:
 
     function triggerCustomEvent(obj, eventType, event, touchData) {
-        var originalType = event.type;
-        event.type = eventType;
-
-        $.event.dispatch.call(obj, event, touchData);
-        event.type = originalType;
+        var newEvent = Object.assign(
+            Object.create(Object.getPrototypeOf(event)),
+            event,
+            {type: eventType}
+        );
+        $.event.dispatch.call(obj, newEvent, touchData);
     }
 
     // Correctly on anything we've overloaded:
