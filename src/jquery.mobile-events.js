@@ -318,7 +318,7 @@
                 window.clearTimeout(action);
                 $this.data('callee2', doubleTapFunc2);
 
-                if (delta < settings.doubletap_int && (e.target == origTarget) && delta > 100 && e.which === 1) {
+                if (delta < settings.doubletap_int && (e.target == origTarget) && delta > 100 && e.which <= 1) {
                     $this.data('doubletapped', true);
                     window.clearTimeout(settings.tap_timer);
 
