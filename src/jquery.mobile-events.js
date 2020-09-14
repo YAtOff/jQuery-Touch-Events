@@ -853,7 +853,13 @@
         var newEvent = Object.assign(
             Object.create(Object.getPrototypeOf(event)),
             event,
-            {type: eventType}
+            {
+                type: eventType,
+                originalEvent: originalEvent && Object.assign(
+                    Object.create(Object.getPrototypeOf(event.originalEvent)),
+                    event.originalEvent
+                )
+            }
         );
         $.event.dispatch.call(obj, newEvent, touchData);
     }
