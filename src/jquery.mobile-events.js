@@ -855,7 +855,7 @@
             event,
             {
                 type: eventType,
-                originalEvent: originalEvent && Object.assign(
+                originalEvent: event.originalEvent && Object.assign(
                     Object.create(Object.getPrototypeOf(event.originalEvent)),
                     event.originalEvent
                 )
