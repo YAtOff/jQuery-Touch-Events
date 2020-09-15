@@ -850,17 +850,7 @@
     // Trigger a custom event:
 
     function triggerCustomEvent(obj, eventType, event, touchData) {
-        var newEvent = Object.assign(
-            Object.create(Object.getPrototypeOf(event)),
-            event,
-            {
-                type: eventType,
-                originalEvent: event.originalEvent && Object.assign(
-                    Object.create(Object.getPrototypeOf(event.originalEvent)),
-                    event.originalEvent
-                )
-            }
-        );
+        var newEvent = new $.Event(event.originalEvent || event, { type: eventType });
         $.event.dispatch.call(obj, newEvent, touchData);
     }
 
